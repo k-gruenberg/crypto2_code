@@ -1,20 +1,20 @@
 """
-Integer to bit array.
+Integer to bit array (little-endian).
 
-E.g.: 0x1F => [0, 0, 0, 1, 1, 1, 1, 1]
+E.g.: bits(0x1F) == [1, 1, 1, 1, 1, 0, 0, 0]
 
 Source: https://stackoverflow.com/questions/10321978/integer-to-bitfield-as-a-list
 """
 def bits(n):
 	bits_ = [int(digit) for digit in bin(n)[2:]] # [2:] to chop off the "0b" part
-	result = ([0] * (8 - len(bits_))) + bits_
-	result = list(reversed(result))
+	result = ([0] * (8 - len(bits_))) + bits_ # prepend leading zeros, if necessary, to make it 8-bit
+	result = list(reversed(result)) # bin() returns a Big-Endian string, we need a Little-Endian string however, so reverse the order.
 	return result
 
 """
-Bit array to integer.
+Bit array (little-endian) to integer.
 
-E.g.: [0, 0, 0, 1, 1, 1, 1, 1] => 0x1F
+E.g.: to_byte([1, 1, 1, 1, 1, 0, 0, 0]) == 0x1F
 """
 def to_byte(bits_):
 	bits_ = list(reversed(bits_))

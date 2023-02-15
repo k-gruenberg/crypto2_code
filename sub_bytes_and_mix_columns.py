@@ -20,6 +20,7 @@ def to_byte(bits_):
 	bits_ = list(reversed(bits_))
 	return ZZ(bits_[0]) * 128 + ZZ(bits_[1]) * 64 + ZZ(bits_[2]) * 32 + ZZ(bits_[3]) * 16 + ZZ(bits_[4]) * 8 + ZZ(bits_[5]) * 4 + ZZ(bits_[6]) * 2 + ZZ(bits_[7])
 
+var('t')
 F256 = PolynomialRing(GF(2),t).quotient_ring(t**8 + t**4 + t**3 + t + 1) # https://en.wikipedia.org/wiki/Finite_field_arithmetic#Rijndael's_(AES)_finite_field
 Z = ZZ['x']
 TPR = Z.quotient(x**8+1)

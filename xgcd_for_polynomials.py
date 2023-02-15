@@ -204,7 +204,7 @@ def xgcd(poly1, poly2):
 	prints = []
 	while (r != 0):
 		quotient = old_r // r
-		prints.append([f"{old_r} = {quotient} * {r} + {old_r - quotient * r}", f"{old_r - quotient * r} = {old_r} - {quotient} * {r}", f"= {old_s - quotient * s} * {poly1} + {old_t - quotient * t} * {poly2}"])
+		prints.append([f"[{old_r}] = [{quotient}] * [{r}] + [{old_r - quotient * r}]", f"[{old_r - quotient * r}] = [{old_r}] - [{quotient}] * [{r}]", f"= [{old_s - quotient * s}] * [{poly1}] + [{old_t - quotient * t}] * [{poly2}]"])
 		(old_r, r) = (r, old_r - quotient * r)
 		(old_s, s) = (s, old_s - quotient * s)
 		(old_t, t) = (t, old_t - quotient * t)
